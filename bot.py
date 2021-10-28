@@ -100,11 +100,11 @@ async def questions(message):
         await message.channel.send("Was war unser Score?")
     elif(score_home == -1):
         score_home = int(input)
-        print("Punkte: " + score_home)
+        print("Punkte: " + str(score_home))
         await message.channel.send("Was war der gegnerische Score?")
     elif(score_oppo == -1):
         score_oppo = int(input)
-        print("Punkte: " + score_oppo)
+        print("Punkte: " + str(score_oppo))
         await create_image(message.channel)
         await message.channel.send("""Passt das?
 (Ja / !neu)""")
