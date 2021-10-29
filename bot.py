@@ -69,7 +69,7 @@ def draw_draw(image):
 
 @client.event
 async def on_message(message):
-    if(str(message.author) != "Uniliga#2316" and str(message.channel) == ergebnis_input_channel_name):
+    if(str(message.author) != "Uniliga Unofficial#2316" and str(message.channel) == ergebnis_input_channel_name):
         await questions(message)
 
 
