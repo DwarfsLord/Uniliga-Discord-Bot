@@ -69,7 +69,7 @@ def draw_draw(image):
 
 @client.event
 async def on_message(message):
-    if(str(message.author) != "Uniliga Unofficial#2316" and str(message.channel) == ergebnis_input_channel_name):
+    if(message.author.id != 902968959891021854 and str(message.channel) == ergebnis_input_channel_name):
         await questions(message)
 
 
@@ -120,7 +120,7 @@ async def create_image(channel):
     global score_home
     global score_oppo
 
-    background = Image.open("background.png")
+    background = Image.open("background2.png")
     image = ImageDraw.Draw(background)
 
     if(score_home > score_oppo):
