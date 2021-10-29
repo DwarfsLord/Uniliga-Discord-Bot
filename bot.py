@@ -4,14 +4,17 @@ import os
 
 client = discord.Client()
 
-ergebnis_chanel_id = 903108327460982804
+ergebnis_chanel_id = 902880440547946536
 
-ergebnis_input_channel_name = 'ergebnisse_input'
+ergebnis_input_channel_name = 'ergebnisse-input'
+
+font_bold = "Play-Bold.ttf"
+font_regular = "Play-Regular.ttf"
 
 win_colour = (255,255,255)
-win_font = "Merriweather-Regular.ttf"
+win_font = font_regular
 lose_colour = (200,200,200)
-lose_font = "Merriweather-Light.ttf"
+lose_font = font_regular
 
 game = ""
 team_home = ""
@@ -34,7 +37,7 @@ def draw_team_name(image, string, font_name, area_center_x, area_center_y, max_x
 
 def draw_score(image, score_left, score_right, font_size = 45):
     
-    score_font = ImageFont.truetype("Merriweather-Regular.ttf", size = font_size)
+    score_font = ImageFont.truetype(font_bold, size = font_size)
 
     x,y = image.multiline_textsize(str(score_left), score_font)
 
@@ -45,36 +48,41 @@ def draw_score(image, score_left, score_right, font_size = 45):
     image.multiline_text((250-x/2,140), ":", (255,255,255), font = score_font, align = "center")
 
 def draw_game(image, game):
-    font = find_font(image, game, "Merriweather-Bold.ttf", 68, 30)
+    font = find_font(image, game, font_bold, 68, 30)
     x,y = image.multiline_textsize(game, font)
-    image.multiline_text((5,195-y), game, (100,182,99), font = font, align = "left")
+    image.multiline_text((5,195-y), game, (255,255,255), font = font, align = "left")
+    # image.multiline_text((5,195-y), game, (100,182,99), font = font, align = "left")
 
 def draw_win(image):
     title = "WIN"
-    font = ImageFont.truetype("Merriweather-Bold.ttf", size=65)
+    font = ImageFont.truetype(font_bold, size=65)
+    # font = ImageFont.truetype("Merriweather-Bold.ttf", size=65)
     x,y = image.multiline_textsize(title, font)
-    image.multiline_text((250-x/2,-10), title, (226,202,0), font = font, align = "left")
+    image.multiline_text((250-x/2,-10), title, (56,139,60), font = font, align = "left")
 
 def draw_loss(image):
     title = "LOSS"
-    font = ImageFont.truetype("Merriweather-Bold.ttf", size=65)
+    font = ImageFont.truetype(font_bold, size=65)
+    x,y = image.multiline_textsize(title, font)
+    image.multiline_text((250-x/2,-10), title, (115,40,40), font = font, align = "left")
+
+def draw_draw(image):
+    title = "TIE"
+    font = ImageFont.truetype(font_bold, size=60)
     x,y = image.multiline_textsize(title, font)
     image.multiline_text((250-x/2,-10), title, (99,109,196), font = font, align = "left")
 
-def draw_draw(image):
-    title = "DRAW"
-    font = ImageFont.truetype("Merriweather-Bold.ttf", size=65)
-    x,y = image.multiline_textsize(title, font)
-    image.multiline_text((250-x/2,-10), title, (167,167,167), font = font, align = "left")
-
 @client.event
 async def on_message(message):
+    print(message.channel)
     if(message.author.id != 902968959891021854 and str(message.channel) == ergebnis_input_channel_name):
         await questions(message)
 
 
 async def questions(message):
     input = message.content
+
+    print("test")
 
     global game
     global team_home
