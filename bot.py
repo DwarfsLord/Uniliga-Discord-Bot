@@ -2,7 +2,10 @@ import discord
 from PIL import Image, ImageFont, ImageDraw
 import os
 
-client = discord.Client()
+intents = discord.Intents.none()
+intents.messages = True
+
+client = discord.Client(intents)
 
 ergebnis_chanel_id = 902880440547946536
 
