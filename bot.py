@@ -3,7 +3,6 @@ from PIL import Image, ImageFont, ImageDraw
 import os
 
 from dotenv import load_dotenv
-
 # Lade die Umgebungsvariablen aus der .env-Datei
 load_dotenv()
 
@@ -17,8 +16,8 @@ ergebnis_chanel_id = 902880440547946536
 
 ergebnis_input_channel_name = 'ergebnisse-input'
 
-font_bold = "Play-Bold.ttf"
-font_regular = "Play-Regular.ttf"
+font_bold = "/assets/Play-Bold.ttf"
+font_regular = "/assets/Play-Regular.ttf"
 
 win_colour = (255, 255, 255)
 win_font = font_regular
@@ -153,7 +152,7 @@ async def create_image(channel):
     global score_home
     global score_oppo
 
-    background = Image.open("background2.png")
+    background = Image.open("/assets/background2.png")
     image = ImageDraw.Draw(background)
 
     if (score_home > score_oppo):

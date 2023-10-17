@@ -1,6 +1,11 @@
 import discord
 from dataclasses import dataclass
 from typing import List
+import os
+
+from dotenv import load_dotenv
+# Lade die Umgebungsvariablen aus der .env-Datei
+load_dotenv()
 
 @dataclass
 class Channel:
@@ -22,4 +27,4 @@ async def on_message(message):
         for target in channels[0].tagets:
             await client.get_channel(target).send("Test!")
 
-client.run("OTAyOTY4OTU5ODkxMDIxODU0.YXmJYA.XjupU4G6BHohBtO9PlL6g41WNRA")
+client.run(os.environ.get("DISCORD_TOKEN"))
